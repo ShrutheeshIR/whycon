@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.py": "python",
+        "*.ipp": "cpp"
+    }
+}

@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/olorin/Desktop/IISc/WhyconFork/whycon/src
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -77,6 +66,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,30 +111,44 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named whycon
+# Target rules for targets named whycon2
 
 # Build rule for target.
-whycon: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 whycon
-.PHONY : whycon
+whycon2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 whycon2
+.PHONY : whycon2
 
 # fast build rule for target.
-whycon/fast:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/build
-.PHONY : whycon/fast
+whycon2/fast:
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/build
+.PHONY : whycon2/fast
 
-#=============================================================================
-# Target rules for targets named whyc
+boost_ext.o: boost_ext.cpp.o
 
-# Build rule for target.
-whyc: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 whyc
-.PHONY : whyc
+.PHONY : boost_ext.o
 
-# fast build rule for target.
-whyc/fast:
-	$(MAKE) -f CMakeFiles/whyc.dir/build.make CMakeFiles/whyc.dir/build
-.PHONY : whyc/fast
+# target to build an object file
+boost_ext.cpp.o:
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/boost_ext.cpp.o
+.PHONY : boost_ext.cpp.o
+
+boost_ext.i: boost_ext.cpp.i
+
+.PHONY : boost_ext.i
+
+# target to preprocess a source file
+boost_ext.cpp.i:
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/boost_ext.cpp.i
+.PHONY : boost_ext.cpp.i
+
+boost_ext.s: boost_ext.cpp.s
+
+.PHONY : boost_ext.s
+
+# target to generate assembly for a file
+boost_ext.cpp.s:
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/boost_ext.cpp.s
+.PHONY : boost_ext.cpp.s
 
 common/CMessage.o: common/CMessage.cpp.o
 
@@ -142,7 +156,7 @@ common/CMessage.o: common/CMessage.cpp.o
 
 # target to build an object file
 common/CMessage.cpp.o:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/CMessage.cpp.o
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/CMessage.cpp.o
 .PHONY : common/CMessage.cpp.o
 
 common/CMessage.i: common/CMessage.cpp.i
@@ -151,7 +165,7 @@ common/CMessage.i: common/CMessage.cpp.i
 
 # target to preprocess a source file
 common/CMessage.cpp.i:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/CMessage.cpp.i
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/CMessage.cpp.i
 .PHONY : common/CMessage.cpp.i
 
 common/CMessage.s: common/CMessage.cpp.s
@@ -160,7 +174,7 @@ common/CMessage.s: common/CMessage.cpp.s
 
 # target to generate assembly for a file
 common/CMessage.cpp.s:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/CMessage.cpp.s
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/CMessage.cpp.s
 .PHONY : common/CMessage.cpp.s
 
 common/CPoint.o: common/CPoint.cpp.o
@@ -169,7 +183,7 @@ common/CPoint.o: common/CPoint.cpp.o
 
 # target to build an object file
 common/CPoint.cpp.o:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/CPoint.cpp.o
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/CPoint.cpp.o
 .PHONY : common/CPoint.cpp.o
 
 common/CPoint.i: common/CPoint.cpp.i
@@ -178,7 +192,7 @@ common/CPoint.i: common/CPoint.cpp.i
 
 # target to preprocess a source file
 common/CPoint.cpp.i:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/CPoint.cpp.i
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/CPoint.cpp.i
 .PHONY : common/CPoint.cpp.i
 
 common/CPoint.s: common/CPoint.cpp.s
@@ -187,7 +201,7 @@ common/CPoint.s: common/CPoint.cpp.s
 
 # target to generate assembly for a file
 common/CPoint.cpp.s:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/CPoint.cpp.s
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/CPoint.cpp.s
 .PHONY : common/CPoint.cpp.s
 
 common/CPosition.o: common/CPosition.cpp.o
@@ -196,7 +210,7 @@ common/CPosition.o: common/CPosition.cpp.o
 
 # target to build an object file
 common/CPosition.cpp.o:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/CPosition.cpp.o
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/CPosition.cpp.o
 .PHONY : common/CPosition.cpp.o
 
 common/CPosition.i: common/CPosition.cpp.i
@@ -205,7 +219,7 @@ common/CPosition.i: common/CPosition.cpp.i
 
 # target to preprocess a source file
 common/CPosition.cpp.i:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/CPosition.cpp.i
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/CPosition.cpp.i
 .PHONY : common/CPosition.cpp.i
 
 common/CPosition.s: common/CPosition.cpp.s
@@ -214,7 +228,7 @@ common/CPosition.s: common/CPosition.cpp.s
 
 # target to generate assembly for a file
 common/CPosition.cpp.s:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/CPosition.cpp.s
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/CPosition.cpp.s
 .PHONY : common/CPosition.cpp.s
 
 common/CRawImage.o: common/CRawImage.cpp.o
@@ -223,7 +237,7 @@ common/CRawImage.o: common/CRawImage.cpp.o
 
 # target to build an object file
 common/CRawImage.cpp.o:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/CRawImage.cpp.o
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/CRawImage.cpp.o
 .PHONY : common/CRawImage.cpp.o
 
 common/CRawImage.i: common/CRawImage.cpp.i
@@ -232,7 +246,7 @@ common/CRawImage.i: common/CRawImage.cpp.i
 
 # target to preprocess a source file
 common/CRawImage.cpp.i:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/CRawImage.cpp.i
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/CRawImage.cpp.i
 .PHONY : common/CRawImage.cpp.i
 
 common/CRawImage.s: common/CRawImage.cpp.s
@@ -241,7 +255,7 @@ common/CRawImage.s: common/CRawImage.cpp.s
 
 # target to generate assembly for a file
 common/CRawImage.cpp.s:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/CRawImage.cpp.s
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/CRawImage.cpp.s
 .PHONY : common/CRawImage.cpp.s
 
 common/CThread.o: common/CThread.cpp.o
@@ -250,7 +264,7 @@ common/CThread.o: common/CThread.cpp.o
 
 # target to build an object file
 common/CThread.cpp.o:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/CThread.cpp.o
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/CThread.cpp.o
 .PHONY : common/CThread.cpp.o
 
 common/CThread.i: common/CThread.cpp.i
@@ -259,7 +273,7 @@ common/CThread.i: common/CThread.cpp.i
 
 # target to preprocess a source file
 common/CThread.cpp.i:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/CThread.cpp.i
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/CThread.cpp.i
 .PHONY : common/CThread.cpp.i
 
 common/CThread.s: common/CThread.cpp.s
@@ -268,7 +282,7 @@ common/CThread.s: common/CThread.cpp.s
 
 # target to generate assembly for a file
 common/CThread.cpp.s:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/CThread.cpp.s
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/CThread.cpp.s
 .PHONY : common/CThread.cpp.s
 
 common/CTimer.o: common/CTimer.cpp.o
@@ -277,7 +291,7 @@ common/CTimer.o: common/CTimer.cpp.o
 
 # target to build an object file
 common/CTimer.cpp.o:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/CTimer.cpp.o
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/CTimer.cpp.o
 .PHONY : common/CTimer.cpp.o
 
 common/CTimer.i: common/CTimer.cpp.i
@@ -286,7 +300,7 @@ common/CTimer.i: common/CTimer.cpp.i
 
 # target to preprocess a source file
 common/CTimer.cpp.i:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/CTimer.cpp.i
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/CTimer.cpp.i
 .PHONY : common/CTimer.cpp.i
 
 common/CTimer.s: common/CTimer.cpp.s
@@ -295,7 +309,7 @@ common/CTimer.s: common/CTimer.cpp.s
 
 # target to generate assembly for a file
 common/CTimer.cpp.s:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/CTimer.cpp.s
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/CTimer.cpp.s
 .PHONY : common/CTimer.cpp.s
 
 common/cmath.o: common/cmath.cpp.o
@@ -304,7 +318,7 @@ common/cmath.o: common/cmath.cpp.o
 
 # target to build an object file
 common/cmath.cpp.o:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/cmath.cpp.o
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/cmath.cpp.o
 .PHONY : common/cmath.cpp.o
 
 common/cmath.i: common/cmath.cpp.i
@@ -313,7 +327,7 @@ common/cmath.i: common/cmath.cpp.i
 
 # target to preprocess a source file
 common/cmath.cpp.i:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/cmath.cpp.i
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/cmath.cpp.i
 .PHONY : common/cmath.cpp.i
 
 common/cmath.s: common/cmath.cpp.s
@@ -322,7 +336,7 @@ common/cmath.s: common/cmath.cpp.s
 
 # target to generate assembly for a file
 common/cmath.cpp.s:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/cmath.cpp.s
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/cmath.cpp.s
 .PHONY : common/cmath.cpp.s
 
 common/color.o: common/color.c.o
@@ -331,7 +345,7 @@ common/color.o: common/color.c.o
 
 # target to build an object file
 common/color.c.o:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/color.c.o
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/color.c.o
 .PHONY : common/color.c.o
 
 common/color.i: common/color.c.i
@@ -340,7 +354,7 @@ common/color.i: common/color.c.i
 
 # target to preprocess a source file
 common/color.c.i:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/color.c.i
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/color.c.i
 .PHONY : common/color.c.i
 
 common/color.s: common/color.c.s
@@ -349,7 +363,7 @@ common/color.s: common/color.c.s
 
 # target to generate assembly for a file
 common/color.c.s:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/common/color.c.s
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/common/color.c.s
 .PHONY : common/color.c.s
 
 imageproc/CCircleDetect.o: imageproc/CCircleDetect.cpp.o
@@ -358,7 +372,7 @@ imageproc/CCircleDetect.o: imageproc/CCircleDetect.cpp.o
 
 # target to build an object file
 imageproc/CCircleDetect.cpp.o:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/imageproc/CCircleDetect.cpp.o
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/imageproc/CCircleDetect.cpp.o
 .PHONY : imageproc/CCircleDetect.cpp.o
 
 imageproc/CCircleDetect.i: imageproc/CCircleDetect.cpp.i
@@ -367,7 +381,7 @@ imageproc/CCircleDetect.i: imageproc/CCircleDetect.cpp.i
 
 # target to preprocess a source file
 imageproc/CCircleDetect.cpp.i:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/imageproc/CCircleDetect.cpp.i
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/imageproc/CCircleDetect.cpp.i
 .PHONY : imageproc/CCircleDetect.cpp.i
 
 imageproc/CCircleDetect.s: imageproc/CCircleDetect.cpp.s
@@ -376,7 +390,7 @@ imageproc/CCircleDetect.s: imageproc/CCircleDetect.cpp.s
 
 # target to generate assembly for a file
 imageproc/CCircleDetect.cpp.s:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/imageproc/CCircleDetect.cpp.s
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/imageproc/CCircleDetect.cpp.s
 .PHONY : imageproc/CCircleDetect.cpp.s
 
 imageproc/CNecklace.o: imageproc/CNecklace.cpp.o
@@ -385,7 +399,7 @@ imageproc/CNecklace.o: imageproc/CNecklace.cpp.o
 
 # target to build an object file
 imageproc/CNecklace.cpp.o:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/imageproc/CNecklace.cpp.o
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/imageproc/CNecklace.cpp.o
 .PHONY : imageproc/CNecklace.cpp.o
 
 imageproc/CNecklace.i: imageproc/CNecklace.cpp.i
@@ -394,7 +408,7 @@ imageproc/CNecklace.i: imageproc/CNecklace.cpp.i
 
 # target to preprocess a source file
 imageproc/CNecklace.cpp.i:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/imageproc/CNecklace.cpp.i
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/imageproc/CNecklace.cpp.i
 .PHONY : imageproc/CNecklace.cpp.i
 
 imageproc/CNecklace.s: imageproc/CNecklace.cpp.s
@@ -403,7 +417,7 @@ imageproc/CNecklace.s: imageproc/CNecklace.cpp.s
 
 # target to generate assembly for a file
 imageproc/CNecklace.cpp.s:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/imageproc/CNecklace.cpp.s
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/imageproc/CNecklace.cpp.s
 .PHONY : imageproc/CNecklace.cpp.s
 
 imageproc/CPositionServer.o: imageproc/CPositionServer.cpp.o
@@ -412,7 +426,7 @@ imageproc/CPositionServer.o: imageproc/CPositionServer.cpp.o
 
 # target to build an object file
 imageproc/CPositionServer.cpp.o:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/imageproc/CPositionServer.cpp.o
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/imageproc/CPositionServer.cpp.o
 .PHONY : imageproc/CPositionServer.cpp.o
 
 imageproc/CPositionServer.i: imageproc/CPositionServer.cpp.i
@@ -421,7 +435,7 @@ imageproc/CPositionServer.i: imageproc/CPositionServer.cpp.i
 
 # target to preprocess a source file
 imageproc/CPositionServer.cpp.i:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/imageproc/CPositionServer.cpp.i
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/imageproc/CPositionServer.cpp.i
 .PHONY : imageproc/CPositionServer.cpp.i
 
 imageproc/CPositionServer.s: imageproc/CPositionServer.cpp.s
@@ -430,7 +444,7 @@ imageproc/CPositionServer.s: imageproc/CPositionServer.cpp.s
 
 # target to generate assembly for a file
 imageproc/CPositionServer.cpp.s:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/imageproc/CPositionServer.cpp.s
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/imageproc/CPositionServer.cpp.s
 .PHONY : imageproc/CPositionServer.cpp.s
 
 imageproc/CTransformation.o: imageproc/CTransformation.cpp.o
@@ -439,7 +453,7 @@ imageproc/CTransformation.o: imageproc/CTransformation.cpp.o
 
 # target to build an object file
 imageproc/CTransformation.cpp.o:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/imageproc/CTransformation.cpp.o
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/imageproc/CTransformation.cpp.o
 .PHONY : imageproc/CTransformation.cpp.o
 
 imageproc/CTransformation.i: imageproc/CTransformation.cpp.i
@@ -448,7 +462,7 @@ imageproc/CTransformation.i: imageproc/CTransformation.cpp.i
 
 # target to preprocess a source file
 imageproc/CTransformation.cpp.i:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/imageproc/CTransformation.cpp.i
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/imageproc/CTransformation.cpp.i
 .PHONY : imageproc/CTransformation.cpp.i
 
 imageproc/CTransformation.s: imageproc/CTransformation.cpp.s
@@ -457,7 +471,7 @@ imageproc/CTransformation.s: imageproc/CTransformation.cpp.s
 
 # target to generate assembly for a file
 imageproc/CTransformation.cpp.s:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/imageproc/CTransformation.cpp.s
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/imageproc/CTransformation.cpp.s
 .PHONY : imageproc/CTransformation.cpp.s
 
 imageproc/sysmat.o: imageproc/sysmat.cpp.o
@@ -466,7 +480,7 @@ imageproc/sysmat.o: imageproc/sysmat.cpp.o
 
 # target to build an object file
 imageproc/sysmat.cpp.o:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/imageproc/sysmat.cpp.o
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/imageproc/sysmat.cpp.o
 .PHONY : imageproc/sysmat.cpp.o
 
 imageproc/sysmat.i: imageproc/sysmat.cpp.i
@@ -475,7 +489,7 @@ imageproc/sysmat.i: imageproc/sysmat.cpp.i
 
 # target to preprocess a source file
 imageproc/sysmat.cpp.i:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/imageproc/sysmat.cpp.i
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/imageproc/sysmat.cpp.i
 .PHONY : imageproc/sysmat.cpp.i
 
 imageproc/sysmat.s: imageproc/sysmat.cpp.s
@@ -484,35 +498,8 @@ imageproc/sysmat.s: imageproc/sysmat.cpp.s
 
 # target to generate assembly for a file
 imageproc/sysmat.cpp.s:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/imageproc/sysmat.cpp.s
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/imageproc/sysmat.cpp.s
 .PHONY : imageproc/sysmat.cpp.s
-
-main/runner.o: main/runner.cpp.o
-
-.PHONY : main/runner.o
-
-# target to build an object file
-main/runner.cpp.o:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/main/runner.cpp.o
-.PHONY : main/runner.cpp.o
-
-main/runner.i: main/runner.cpp.i
-
-.PHONY : main/runner.i
-
-# target to preprocess a source file
-main/runner.cpp.i:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/main/runner.cpp.i
-.PHONY : main/runner.cpp.i
-
-main/runner.s: main/runner.cpp.s
-
-.PHONY : main/runner.s
-
-# target to generate assembly for a file
-main/runner.cpp.s:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/main/runner.cpp.s
-.PHONY : main/runner.cpp.s
 
 main/whycon.o: main/whycon.cpp.o
 
@@ -520,7 +507,7 @@ main/whycon.o: main/whycon.cpp.o
 
 # target to build an object file
 main/whycon.cpp.o:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/main/whycon.cpp.o
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/main/whycon.cpp.o
 .PHONY : main/whycon.cpp.o
 
 main/whycon.i: main/whycon.cpp.i
@@ -529,7 +516,7 @@ main/whycon.i: main/whycon.cpp.i
 
 # target to preprocess a source file
 main/whycon.cpp.i:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/main/whycon.cpp.i
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/main/whycon.cpp.i
 .PHONY : main/whycon.cpp.i
 
 main/whycon.s: main/whycon.cpp.s
@@ -538,7 +525,7 @@ main/whycon.s: main/whycon.cpp.s
 
 # target to generate assembly for a file
 main/whycon.cpp.s:
-	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/main/whycon.cpp.s
+	$(MAKE) -f CMakeFiles/whycon2.dir/build.make CMakeFiles/whycon2.dir/main/whycon.cpp.s
 .PHONY : main/whycon.cpp.s
 
 # Help Target
@@ -547,10 +534,12 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... edit_cache"
-	@echo "... whycon"
 	@echo "... rebuild_cache"
-	@echo "... whyc"
+	@echo "... whycon2"
+	@echo "... edit_cache"
+	@echo "... boost_ext.o"
+	@echo "... boost_ext.i"
+	@echo "... boost_ext.s"
 	@echo "... common/CMessage.o"
 	@echo "... common/CMessage.i"
 	@echo "... common/CMessage.s"
@@ -590,9 +579,6 @@ help:
 	@echo "... imageproc/sysmat.o"
 	@echo "... imageproc/sysmat.i"
 	@echo "... imageproc/sysmat.s"
-	@echo "... main/runner.o"
-	@echo "... main/runner.i"
-	@echo "... main/runner.s"
 	@echo "... main/whycon.o"
 	@echo "... main/whycon.i"
 	@echo "... main/whycon.s"
