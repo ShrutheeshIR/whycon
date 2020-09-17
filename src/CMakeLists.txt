@@ -13,6 +13,7 @@ file(GLOB whyconfiles
     "imageproc/*.cpp"
     "imageproc/*.c"
     "main/whycon.cpp"
+    "main/runner.cpp"
 )
 
 ADD_EXECUTABLE(whycon ${whyconfiles})                           

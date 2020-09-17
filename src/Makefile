@@ -474,6 +474,33 @@ imageproc/sysmat.cpp.s:
 	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/imageproc/sysmat.cpp.s
 .PHONY : imageproc/sysmat.cpp.s
 
+main/runner.o: main/runner.cpp.o
+
+.PHONY : main/runner.o
+
+# target to build an object file
+main/runner.cpp.o:
+	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/main/runner.cpp.o
+.PHONY : main/runner.cpp.o
+
+main/runner.i: main/runner.cpp.i
+
+.PHONY : main/runner.i
+
+# target to preprocess a source file
+main/runner.cpp.i:
+	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/main/runner.cpp.i
+.PHONY : main/runner.cpp.i
+
+main/runner.s: main/runner.cpp.s
+
+.PHONY : main/runner.s
+
+# target to generate assembly for a file
+main/runner.cpp.s:
+	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/main/runner.cpp.s
+.PHONY : main/runner.cpp.s
+
 main/whycon.o: main/whycon.cpp.o
 
 .PHONY : main/whycon.o
@@ -549,6 +576,9 @@ help:
 	@echo "... imageproc/sysmat.o"
 	@echo "... imageproc/sysmat.i"
 	@echo "... imageproc/sysmat.s"
+	@echo "... main/runner.o"
+	@echo "... main/runner.i"
+	@echo "... main/runner.s"
 	@echo "... main/whycon.o"
 	@echo "... main/whycon.i"
 	@echo "... main/whycon.s"

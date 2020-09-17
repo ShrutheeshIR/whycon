@@ -4,14 +4,14 @@
 #include "whycon.h"
 //process command line arguments 
 
-void processArgs(int argc,char* argv[]) 
+void whycon::processArgs(int argc,char* argv[]) 
 {
 	numBots = atoi(argv[1]);
-	// circleDiameter = atof(argv[2]);
+	circleDiameter = atof(argv[2]);
 }
 
 
-void initialize(int argc,char* argv[])
+void whycon::initialize(int argc,char* argv[])
 {
     processArgs(argc,argv);
 	image = new CRawImage(imageWidth,imageHeight);
@@ -22,11 +22,11 @@ void initialize(int argc,char* argv[])
 }
 
 
-void processimage(cv::Mat frame)
+void whycon::processimage(cv::Mat frame)
 {
 	image->data = frame.data;
-    for (int i = 0;i<numBots;i++){
-        if (currentSegmentArray[i].valid){
+    for (int i = 0;i<whycon::numBots;i++){
+        if (whycon::currentSegmentArray[i].valid){
             lastSegmentArray[i] = currentSegmentArray[i];
             currentSegmentArray[i] = detectorArray[i]->findSegment(image,lastSegmentArray[i]);
         }
@@ -54,46 +54,6 @@ void processimage(cv::Mat frame)
     
 }
 
-int main(int argc,char* argv[])
-{
-	//initialize logging system, camera and network connection 
-    initialize(argc,argv);
-	//setup timers to assess system performance
-    /*
-	cv::Mat frame = cv::imread("/home/olorin/Desktop/IISc/hand-pose/WhyCon/LCASWhycon/src/whycon/id/00000005.png");
-	
-	cv::Size size(640,480);//the dst image size,e.g.100x100
-	cv::resize(frame,frame,size);
-	int rows = frame.rows;
-	int cols = frame.cols;
-	printf("SIZE - %d, %d", rows, cols);
-	printf("YASSSSSSSSSS\n\n\n\n\n");
-    */
-
-	cv::Mat frame;
-	cv::VideoCapture cap(4);
-	while (stop == false)
-	{
-		if (!cap.read(frame))
-			stop = true;
-		
-		cv::imshow("IMAGE", frame);
-		cv::waitKey(1);
-		numFound = numStatic = 0;
-        processimage(frame);
-    }
-
-	// printf()
-	// numFound = numStatic = 0;
-
-	// processimage(frame);
-	// delete image;
-	for (int i = 0;i<MAX_PATTERNS;i++) delete detectorArray[i];
-	// camera->saveConfig("../etc/camera.cfg");
-	// delete camera;
-	delete trans;
-	return 0;
-}
 
 
 
