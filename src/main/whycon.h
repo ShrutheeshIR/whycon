@@ -10,7 +10,10 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/opencv.hpp>
-
+// #include <boost/python.hpp>
+// #include <boost/python/numpy.hpp>
+// using namespace boost::python;
+// using namespace boost::python::numpy;
 
 //-----These parameters need to be adjusted by the user -----------------------
 
@@ -18,8 +21,10 @@
 // int  imageWidth= 1600;
 // int  imageHeight = 1200;
 
-class whycon{
+class Whycon{
+
     public:
+        Whycon(int no, float diam);
 
         int  imageWidth= 640;
         int  imageHeight = 480;
@@ -66,9 +71,10 @@ class whycon{
         // CCamera* camera;
         CRawImage *image;
 
-        void processArgs(int argc,char* argv[]);
-        void initialize(int argc,char* argv[]);
+        // boost::python::list processimage(boost::python::numpy::ndarray frame);
+        void cleanmem();
         void processimage(cv::Mat frame);
+        // void processimage(boost::python::numpy::ndarray frame);
 
 
 };

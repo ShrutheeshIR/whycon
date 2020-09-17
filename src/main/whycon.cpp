@@ -4,29 +4,23 @@
 #include "whycon.h"
 //process command line arguments 
 
-void whycon::processArgs(int argc,char* argv[]) 
+Whycon::Whycon(int no, float diam)
 {
-	numBots = atoi(argv[1]);
-	circleDiameter = atof(argv[2]);
-}
-
-
-void whycon::initialize(int argc,char* argv[])
-{
-    processArgs(argc,argv);
+    numBots  = no;
+    circleDiameter = diam;
 	image = new CRawImage(imageWidth,imageHeight);
 	trans = new CTransformation(imageWidth,imageHeight,circleDiameter,true);
 	trans->transformType = TRANSFORM_NONE;		//in our case, 2D is the default
 	for (int i = 0;i<MAX_PATTERNS;i++) detectorArray[i] = new CCircleDetect(imageWidth,imageHeight,i);
 	image->getSaveNumber();
+
 }
 
-
-void whycon::processimage(cv::Mat frame)
+void  Whycon::processimage(cv::Mat frame)
 {
 	image->data = frame.data;
-    for (int i = 0;i<whycon::numBots;i++){
-        if (whycon::currentSegmentArray[i].valid){
+    for (int i = 0;i<numBots;i++){
+        if (currentSegmentArray[i].valid){
             lastSegmentArray[i] = currentSegmentArray[i];
             currentSegmentArray[i] = detectorArray[i]->findSegment(image,lastSegmentArray[i]);
         }
@@ -48,10 +42,35 @@ void whycon::processimage(cv::Mat frame)
             if (currentSegmentArray[i].x == lastSegmentArray[i].x) numStatic++;
         }
     }
+    // boost::python::dict marker_info;
+    // boost::python::list markers_info;
+
     for (int i = 0;i<numBots;i++){
-        if (currentSegmentArray[i].valid) printf("Object %i %03f %03f %03f %03f %03f %03f %03f\n",currentSegmentArray[i].ID,-objectArray[i].y,-objectArray[i].z,objectArray[i].x,objectArray[i].pitch, objectArray[i].roll, objectArray[i].yaw, objectArray[i].error);
+        if (currentSegmentArray[i].valid)
+        {
+            // marker_info["ID"] =  currentSegmentArray[i].ID;
+            // marker_info["x"] = -objectArray[i].y;
+            // marker_info["y"] = -objectArray[i].z;
+            // marker_info["z"] = objectArray[i].x;
+            // marker_info["pitch"] = objectArray[i].pitch;
+            // marker_info["roll"] = objectArray[i].roll;
+            // marker_info["yaw"] = objectArray[i].yaw;
+            // marker_info["err"] = -objectArray[i].error;
+            // markers_info.append(marker_info);
+            printf("Object %i %03f %03f %03f %03f %03f %03f %03f\n",currentSegmentArray[i].ID,-objectArray[i].y,-objectArray[i].z,objectArray[i].x,objectArray[i].pitch, objectArray[i].roll, objectArray[i].yaw, objectArray[i].error);
+        }
     }
+    // return markers_info;
     
+}
+
+void Whycon::cleanmem()
+{
+    printf("CLEANING\n");
+    for (int i = 0;i<MAX_PATTERNS;i++) delete this->detectorArray[i];
+	delete this->trans;
+	// delete this->image;
+
 }
 
 

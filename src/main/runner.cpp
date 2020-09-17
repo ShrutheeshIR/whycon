@@ -2,9 +2,9 @@
 
 int main(int argc,char* argv[])
 {
-    whycon *why = new whycon();
+    Whycon why = Whycon(atoi(argv[1]), atof(argv[2]));
 	//initialize logging system, camera and network connection 
-    why->initialize(argc,argv);
+    // why->initialize(argc,argv);
 	//setup timers to assess system performance
     /*
 	cv::Mat frame = cv::imread("/home/olorin/Desktop/IISc/hand-pose/WhyCon/LCASWhycon/src/whycon/id/00000005.png");
@@ -27,8 +27,9 @@ int main(int argc,char* argv[])
 		
 		cv::imshow("IMAGE", frame);
 		cv::waitKey(1);
-		why->numFound = why->numStatic = 0;
-        why->processimage(frame);
+		why.numFound = why.numStatic = 0;
+        // uchar * u_frame = frame.data;
+        why.processimage(frame);
     }
 
 	// printf()
@@ -36,9 +37,9 @@ int main(int argc,char* argv[])
 
 	// processimage(frame);
 	// delete image;
-	for (int i = 0;i<MAX_PATTERNS;i++) delete why->detectorArray[i];
+	for (int i = 0;i<MAX_PATTERNS;i++) delete why.detectorArray[i];
 	// camera->saveConfig("../etc/camera.cfg");
 	// delete camera;
-	delete why->trans;
+	delete why.trans;
 	return 0;
 }
