@@ -28,7 +28,8 @@ int main(int argc,char* argv[])
 		cv::imshow("IMAGE", frame);
 		cv::waitKey(1);
 		why->numFound = why->numStatic = 0;
-        why->processimage(frame);
+        uchar * u_frame = frame.data;
+        why->processimage(u_frame);
     }
 
 	// printf()

@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/olorin/Desktop/IISc/WhyconFork/whycon/src
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -122,6 +122,19 @@ whycon: cmake_check_build_system
 whycon/fast:
 	$(MAKE) -f CMakeFiles/whycon.dir/build.make CMakeFiles/whycon.dir/build
 .PHONY : whycon/fast
+
+#=============================================================================
+# Target rules for targets named whyc
+
+# Build rule for target.
+whyc: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 whyc
+.PHONY : whyc
+
+# fast build rule for target.
+whyc/fast:
+	$(MAKE) -f CMakeFiles/whyc.dir/build.make CMakeFiles/whyc.dir/build
+.PHONY : whyc/fast
 
 common/CMessage.o: common/CMessage.cpp.o
 
@@ -534,9 +547,10 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
-	@echo "... whycon"
 	@echo "... edit_cache"
+	@echo "... whycon"
+	@echo "... rebuild_cache"
+	@echo "... whyc"
 	@echo "... common/CMessage.o"
 	@echo "... common/CMessage.i"
 	@echo "... common/CMessage.s"

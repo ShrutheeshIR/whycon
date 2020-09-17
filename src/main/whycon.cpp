@@ -11,7 +11,7 @@ void whycon::processArgs(int argc,char* argv[])
 }
 
 
-void whycon::initialize(int argc,char* argv[])
+extern "C" void whycon::initialize(int argc,char* argv[])
 {
     processArgs(argc,argv);
 	image = new CRawImage(imageWidth,imageHeight);
@@ -22,9 +22,9 @@ void whycon::initialize(int argc,char* argv[])
 }
 
 
-void whycon::processimage(cv::Mat frame)
+extern "C" void whycon::processimage(uchar * u_frame)
 {
-	image->data = frame.data;
+	image->data = u_frame;
     for (int i = 0;i<whycon::numBots;i++){
         if (whycon::currentSegmentArray[i].valid){
             lastSegmentArray[i] = currentSegmentArray[i];

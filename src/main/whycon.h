@@ -68,7 +68,7 @@ class whycon{
 
         void processArgs(int argc,char* argv[]);
         void initialize(int argc,char* argv[]);
-        void processimage(cv::Mat frame);
+        void processimage(uchar * frame);
 
 
 };
